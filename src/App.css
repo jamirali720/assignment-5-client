@@ -1,0 +1,16 @@
+
+.ant-card-head-title {
+    color:#0CB1D8;
+    font-size: 22px;
+    text-transform:capitalize;
+    font-weight: bold;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
