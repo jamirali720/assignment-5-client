@@ -59,7 +59,7 @@ const UploadImageToCloudinary = () => {
 
   return (
     <Fragment>
-      <div className="min-h-full bg-gradient-to-r from-blue-500 to-cyan-500 p-2 pt-10 sm:pt-16 md:pt-20 lg:pt-24">
+      <div className="min-h-full p-2 pt-10 sm:pt-16 md:pt-20 lg:pt-24">
         <MetaData title="Upload Hero Image" />
         {isLoading ? (
           <div className="w-full  flex justify-center justify-items-center">

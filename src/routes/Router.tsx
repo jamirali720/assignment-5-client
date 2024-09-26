@@ -6,7 +6,10 @@ import { userPaths } from "./user.routes";
 import Login from "../components/User_Authentication/Login";
 import SignUp from "../components/User_Authentication/SignUp";
 import Home from "../components/Home/Home";
-import BIkeDetails from "../components/Home/BIkeDetails";
+import AboutUs from "../components/About_Us/AboutUs";
+import BikeListingPage from "../components/Bike_Management/BikeListingPage";
+import BikeDetailPage from "../components/Bike_Management/BikeDetailPage";
+import NotFound from "../components/notFound/NotFound";
 
 
 
@@ -15,7 +18,30 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    children: [
+      {
+        path: "/bike-details/:bikeId",
+        element: <BikeDetailPage />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "about",
+        element: <AboutUs />,
+      },
+      {
+        path: "lists",
+        element: <BikeListingPage />,
+      },
+    ],
   },
+
   {
     path: "/admin",
     element: <App />,
@@ -27,17 +53,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: routerPathGenerator(userPaths),
   },
-  {   
-    path: "bike-details/:bikeId",
-    element: <BIkeDetails />,
-  },
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
+    path: "*",
+    element: <NotFound />,    
   },
 ]);
 

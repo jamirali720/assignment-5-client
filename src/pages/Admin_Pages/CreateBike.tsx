@@ -76,7 +76,7 @@ const CreateBike = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="bg-gradient-to-r from-purple-500 to-indigo-500 w-full h-max-screen rounded-md py-4">
+        <div className="w-full h-max-screen rounded-md py-4">
           <Card
             title="Add New Bike"
             className="max-w-full  md:mx-auto  md:w-1/2 max-h-full  rounded-md px-4"

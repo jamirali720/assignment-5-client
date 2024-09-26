@@ -7,21 +7,22 @@ import MetaData from "../MetaData/MetaData";
 import { useLoginUserMutation } from "../../redux/api/authApi";
 import {
   IErrorResponse,
-  IErrorResponseStatus,
+  IErrorResponseStatus,  
   TLoginUser,  
 } from "../../types/types";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setCredentials, setUserRole } from "../../redux/features/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
+
 
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [loginUser, { isLoading, isError, error }] = useLoginUserMutation();
-
+  const theme = useAppSelector((state) => state.theme.isDarkMode);
  
   // show error message
   let message = "";
@@ -45,8 +46,8 @@ const Login = () => {
 
     try {
       const result = await loginUser(formData as Partial<TLoginUser>).unwrap();
-      console.log("check login data", result);
-      const user = verifyToken(result.token);
+      const user = verifyToken(result.token)  
+      console.log("check login data", user);
 
       if (result.success) {
         toast.success(result?.message, {
@@ -72,19 +73,23 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="w-screen h-screen  bg-gradient-to-r from-blue-500 to-cyan-500 pt-10 sm:pt-16 md:pt20 lg:pt-24">
+      <div
+        className={`w-screen h-screen pt-10 sm:pt-16 md:pt20 lg:pt-24  shadow-sm ${
+          theme && "dark"
+        }`}
+      >
         <MetaData title="Login" />
         {isLoading ? (
           <div className="w-full h-screen flex justify-center justify-items-center">
             <Spinner />
           </div>
         ) : (
-          <div className="rounded-md md:py-5 ">
+          <div className="rounded-md md:py-5 mt-32 md:mt-10">
             <Card
               title="Welcome come back"
-              className="bg-[#F9F9F9] w-screen  md:mx-auto sm:w-2/3 sm:mx-auto  md:w-1/3 max-h-full  rounded-md px-4"
+              className="bg-[#F9F9F9]   dark:bg-black dark:text-white  w-screen  md:mx-auto sm:w-2/3 sm:mx-auto  md:w-1/3 max-h-full  rounded-md px-4"
             >
-              <div className="bg-[#F9F9F9] w-full max-w-full h-auto ">
+              <div className="bg-[#F9F9F9] w-full max-w-full h-auto  dark:bg-black dark:text-white  ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   className=""
@@ -93,7 +98,7 @@ const Login = () => {
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
                       type="email"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  dark:bg-black dark:text-white "
                       {...register("email", { required: true })}
                       placeholder="Enter your email"
                     ></input>
@@ -105,7 +110,7 @@ const Login = () => {
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
                       type="password"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  dark:bg-black dark:text-white "
                       {...register("password", { required: true })}
                       placeholder="Enter your password"
                     ></input>

@@ -1,12 +1,13 @@
-import UpdateBIke from "../pages/Admin_Pages/UpdateBike";
 import CreateBike from ".././pages/Admin_Pages/CreateBike";
 import AdminDashboard from "../pages/Admin_Pages/AdminDashboard";
-import AdminProfile from "../pages/Admin_Pages/AdminProfile";
 import BikeManagement from "../pages/Admin_Pages/BikeManagement";
 import CouponManagement from "../pages/Admin_Pages/CouponManagement";
 import UserManagement from "../pages/Admin_Pages/UserManagement";
 import UploadImageToCloudinary from "../pages/Admin_Pages/UploadImageToCloudinary";
 import HeroImageManagement from "../pages/Admin_Pages/HeroImageManagement";
+import CreateNewTeam from "../pages/Admin_Pages/CreateNewTeam";
+import UserProfilePage from "../pages/user_pages/UserProfilePage";
+import RentalsPage from "../pages/Admin_Pages/RentalsPage";
 
 export const adminPaths = [
   {
@@ -20,7 +21,7 @@ export const adminPaths = [
       {
         name: "Admin-Profile",
         path: "admin-profile",
-        element: <AdminProfile />,
+        element: <UserProfilePage />,
       },
       {
         name: "Bike Management",
@@ -28,16 +29,15 @@ export const adminPaths = [
         element: <BikeManagement />,
       },
       {
+        name: "Booking Management",
+        path: "booking-management",
+        element: <RentalsPage />,
+      },
+      {
         name: "Create Bike",
         path: "create-bike",
         element: <CreateBike />,
-      },
-      
-      {
-        name: "Update Bike",
-        path: "update-bike/:id",
-        element: <UpdateBIke />,
-      },
+      },      
       {
         name: "Coupon Management",
         path: "coupon-management",
@@ -57,6 +57,11 @@ export const adminPaths = [
         name: "Images Management",
         path: "hero-images-management",
         element: <HeroImageManagement />,
+      },
+      {
+        name: "Create Team Member",
+        path: "create-team-member",
+        element: <CreateNewTeam />,
       },
     ],
   },

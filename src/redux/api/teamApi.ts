@@ -1,26 +1,22 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "./baseApi";
 
 // Define a service using a base URL and expected endpoints
-export const teamApi = createApi({
-  reducerPath: "teamApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://assignment-4-server-bice.vercel.app/api/teams",
-  }),
-  tagTypes: ["teams"],
+export const teamApi = baseApi.injectEndpoints({  
   endpoints: (builder) => ({
     addTeamMember: builder.mutation({
       query: (data) => {
         console.log(data);
         return {
-          url: "/create-team",
+          url: "/teams/create-team",
           method: "POST",
           body: data,
         };
       },
+      invalidatesTags: ["teams"],
     }),
     getAllTeamMembers: builder.query({
       query: (query) => {
-        const link = `/teams?name=${query}`;
+        const link = `/teams/team-members?name=${query}`;
         return {
           url: link,
           method: "GET",
@@ -31,7 +27,7 @@ export const teamApi = createApi({
     getSingleTeamMember: builder.query({
       query: (id) => {
         return {
-          url: `/single-team/${id}`,
+          url: `/teams/single-team/${id}`,
           method: "GET",
         };
       },
@@ -40,7 +36,7 @@ export const teamApi = createApi({
     updatedSingleTeam: builder.mutation({
       query: (data) => {
         return {
-          url: `/update-team`,
+          url: `/teams/update-team`,
           method: "PUT",
           body: data,
         };
@@ -50,7 +46,7 @@ export const teamApi = createApi({
     deletedSingleTeamMember: builder.mutation({
       query: (id) => {
         return {
-          url: `/delete-team/${id}`,
+          url: `/teams/delete-team/${id}`,
           method: "DELETE",
         };
       },

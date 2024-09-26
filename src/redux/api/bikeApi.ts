@@ -19,7 +19,18 @@ export const bikeApi = baseApi.injectEndpoints({
     getAllBikes: builder.query({
       query: (query) => {
         console.log(query)
-        const link = `/bikes/all-bikes?name=${query}`;
+        const link = `/bikes/all-bikes?name=${query.searchTerm}&brand=${query.brand}&model=${query.model}&year=${query.year}&cc=${query.cc}`;
+        return {
+          url: link,
+          method: "GET",
+        };
+      },
+      providesTags: ["bikes"],
+    }),
+    getAllBikesWithoutQuery: builder.query({
+      query: (query) => {
+        console.log(query)
+        const link = `/bikes/bikes`;
         return {
           url: link,
           method: "GET",
@@ -37,9 +48,10 @@ export const bikeApi = baseApi.injectEndpoints({
       providesTags: ["bikes"],
     }),
     updatedSingleBikes: builder.mutation({
-      query: (data) => {
+      query: ({id, data}) => {
+        console.log(id, data)
         return {
-          url: `/update-sport`,
+          url: `/bikes/update-bike/${id}`,
           method: "PUT",
           body: data,
         };
@@ -50,6 +62,15 @@ export const bikeApi = baseApi.injectEndpoints({
       query: (id) => {
         return {
           url: `/bikes/delete-bike/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["bikes"],
+    }),
+    deletedBikeFromDatabase: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/bikes/delete-bike-from-db/${id}`,
           method: "DELETE",
         };
       },
@@ -86,6 +107,8 @@ export const {
   useGetSingleBikesQuery,
   useUpdatedSingleBikesMutation,
   useDeletedSingleBikeMutation,
+  useDeletedBikeFromDatabaseMutation,
   useContactEmailSendMutation, 
+  useGetAllBikesWithoutQueryQuery
   
 } = bikeApi;

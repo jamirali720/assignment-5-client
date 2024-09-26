@@ -2,53 +2,61 @@ import { Button, Card } from "antd";
 import React, { Fragment, useState } from "react";
 
 import Spinner from "../../utils/Spinner";
-import { useNavigate } from "react-router-dom";
 import {
-  useDeletedSingleBikeMutation,
+  useDeletedBikeFromDatabaseMutation,
   useGetAllBikesQuery,
 } from "../../redux/api/bikeApi";
 import MetaData from "../../components/MetaData/MetaData";
 import { toast } from "react-toastify";
 import { TBikeResponse } from "types/types";
+import { useAppSelector } from "../../hooks/hooks";
+import FilterSection from "../../components/Bike_Management/FilterSection";
+import CreateBikeModal from "./CreateBikeModal";
+import UpdateBikeModal from "./UpdateBikeModal";
 
 const BikeManagement: React.FC = () => {
-  const { data, isLoading } = useGetAllBikesQuery(undefined, {
-    pollingInterval: 5000,
-    skip: false,
-    refetchOnMountOrArgChange: true,
-  });
+  const { brand, cc, year, model, searchTerm } = useAppSelector(
+    (state) => state.filter
+  );
+  const { data, isLoading } = useGetAllBikesQuery(
+    { brand, cc, year, searchTerm, model },
+    {
+      pollingInterval: 5000,
+      skip: false,
+      refetchOnMountOrArgChange: true,
+    }
+  );
 
-console.log(data?.data);
-  const navigate = useNavigate();
+  console.log(data?.data);
+ 
   const [itemPerPage, setItemPerPage] = useState<number>(5);
   const [currentPage, setCurrentPage] = useState(1);
-  const [deletedSingleBike] = useDeletedSingleBikeMutation();
+  const [deletedBikeFromDatabase] = useDeletedBikeFromDatabaseMutation();
 
   const totalPages =
     data?.data.length && Math.ceil(data?.data.length / itemPerPage);
-  
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const lastIndex = startIndex + itemPerPage;
+  const renderData = data?.data.slice(startIndex, lastIndex);
 
-    // handler for  updating bike
-  const handleEditProduct = (id: string) => {
-    navigate(`/admin/update-bike/${id}`);
-  };
-
-
-  const handleDeleteProduct = async (id: string) => {    
+  const handleDeleteBike = async (id: string) => {
     try {
-      const res = await deletedSingleBike(id);
-      if (res.data?.success) {
-        toast.success(res.data.message, { position: "top-center" });
+      const confirm = window.confirm('Are you sure you want to delete this bike ?');
+      if (confirm) {
+         const res = await deletedBikeFromDatabase(id);
+         console.log(res);
+         if (res.data?.success) {
+           toast.success(res.data.message, { position: "top-center" });
+         }
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  
   return (
     <Fragment>
-      <MetaData title="Manage-all-Products" />
+      <MetaData title="Manage-all-Bikes" />
       <div>
         {isLoading ? (
           <div>
@@ -56,6 +64,9 @@ console.log(data?.data);
           </div>
         ) : (
           <Card>
+            <div>             
+              <FilterSection />
+            </div>
             <div className="w-full h-10 text-center text-2xl font-semibold mb-3">
               {data?.data.length ? (
                 <span> {data?.data.length} Bikes Available </span>
@@ -69,16 +80,16 @@ console.log(data?.data);
                   <tr className="border border-slate-200 w-full ">
                     <th className="border border-slate-200 py-2">Image</th>
                     <th className="border border-slate-200">Name</th>
+                    <th className="border border-slate-200">Description</th>
                     <th className="border border-slate-200">Brand</th>
-                    <th className="border border-slate-200">Category</th>
-                    <th className="border border-slate-200">Price</th>
+                    <th className="border border-slate-200">Price Hour</th>
                     <th className="border border-slate-200">IsAvailable</th>
                     <th className="border border-slate-200">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data &&
-                    (data.data as TBikeResponse[])?.map((bike, index) => {
+                  {renderData &&
+                    (renderData as TBikeResponse[]).map((bike, index) => {
                       return (
                         <tr
                           key={index}
@@ -109,18 +120,15 @@ console.log(data?.data);
                             {bike.isAvailable.toString()}
                           </td>
                           <td className="border border-slate-200">
-                            <button
-                              className="w-12 h-10 rounded-sm font-semibold text-1xl text-green-500 hover:text-green-600  bg-slate-50 hover:bg-slate-100 ease-in-out duration-300 border border-slate-200 mr-1"
-                              onClick={() => handleEditProduct(bike._id!)}
-                            >
-                              Edit
-                            </button>
-                            <button
-                              className="w-14 h-10 rounded-sm font-semibold text-1xl text-red-400 hover:text-red-500  bg-slate-50 hover:bg-slate-100 ease-in-out duration-300 border border-slate-200 ml-1"
-                              onClick={() => handleDeleteProduct(bike._id!)}
+                            <CreateBikeModal />
+                            <UpdateBikeModal bikeId={bike._id}/>
+                            <Button
+                            type="default"
+                              className="p-5 mx-1 bg-red-600 text-white"
+                              onClick={() => handleDeleteBike(bike._id!)}
                             >
                               Delete
-                            </button>
+                            </Button>
                           </td>
                         </tr>
                       );

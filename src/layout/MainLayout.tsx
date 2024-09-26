@@ -19,43 +19,51 @@ const MainLayout: React.FC = () => {
   } = theme.useToken();
 
   return (
-    <Layout className="md:h-[100vh]">
+    <Layout className="md:h-[100vh">
       <Sidebar collapsed={collapsed} />
       <Layout>
         <Header
           style={{ padding: 0, background: colorBgContainer }}
-          className="flex justify-between justify-items-center"
+          className="flex justify-between justify-items-center md:h-16 h-auto"
         >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
+          <div className="flex flex-col md:flex-row">
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+              }}
+            />
+            <div className="text-sky-500 text-lg font-medium px-2 md:px-4 md:mt-4">
+              Welcome, <strong>{user && user["name"]} </strong>
+            </div>
+          </div>
 
           <div className="flex justify-center justify-items-center gap-3">
-            <span className="text-lg font-medium text-blue-600 pt-4 capitalize">
+            <span className="text-lg text-sky-500 font-medium  pt-4 capitalize">
               <Link to="/"> Home</Link>
             </span>
-            <span className="text-lg font-medium text-blue-600 pt-4 capitalize">
+            <span className="text-lg font-medium text-sky-500 pt-4 capitalize">
               {role} Panel
             </span>
-            <span className="">
-              {user && (
-                <img
-                  className="w-16 h-16 rounded-full p-2 cursor-pointer"
-                  src={user && user["image"]["url"]!}
-                  alt=""
-                />
-              )}
+            <span className="cursor-pointer">
+              <Link to={`/${role}/user-profile`}>
+                {user && (
+                  <img
+                    className="w-16 h-16 rounded-full p-2 cursor-pointer"
+                    src={user && user["image"]["url"]!}
+                    alt={user["name"]}
+                  />
+                )}
+              </Link>
             </span>
           </div>
         </Header>
         <Content
+          className=""
           style={{
             margin: "14px 8px",
             minHeight: 280,

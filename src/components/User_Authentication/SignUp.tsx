@@ -12,10 +12,12 @@ import {
 } from "../../types/types";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/hooks";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpUser, { isLoading, isError, error }] = useSignUpUserMutation();
+  const theme = useAppSelector(state => state.theme.isDarkMode);
 
   console.log("fetching error", error);
   // capture error message
@@ -68,27 +70,27 @@ const SignUp = () => {
 
   return (
     <Fragment>
-      <div className="w-screen h-auto  bg-gradient-to-r from-cyan-500 to-blue-500">
-        <MetaData title="Add your" />
+      <div className={`w-screen h-auto  ${theme && "dark"}`}>
+        <MetaData title="Sign up" />
         {isLoading ? (
           <div className="w-full h-screen flex justify-center justify-items-center">
             <Spinner />
           </div>
         ) : (
-          <div className="rounded-md md:py-5 shadow-lg ">
+          <div className="rounded-md md:py-5 shadow-sm mt-32 md:mt-20">
             <Card
               title="Create a new Account"
-              className="bg-[#F9F9F9] w-screen  md:mx-auto sm:w-2/3 sm:mx-auto  md:w-1/3 max-h-full  rounded-md px-4"
+              className="bg-[#F9F9F9] w-screen dark:bg-black dark:text-white  md:mx-auto sm:w-2/3 sm:mx-auto  md:w-1/3 max-h-full  rounded-md px-4"
             >
-              <div className="bg-[#F9F9F9] w-full max-w-full h-auto ">
+              <div className="bg-[#F9F9F9] w-full max-w-full h-auto  ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className=""
+                  className="dark:bg-black dark:text-white"
                   encType="multipart/form-data"
                 >
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("name", { required: true })}
                       placeholder="Enter your name"
                     ></input>
@@ -98,7 +100,7 @@ const SignUp = () => {
                   </div>
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("email", { required: true })}
                       placeholder="Enter your email"
                     ></input>
@@ -110,7 +112,7 @@ const SignUp = () => {
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
                       type="password"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("password", { required: true })}
                       placeholder="Enter your password"
                     ></input>
@@ -120,9 +122,9 @@ const SignUp = () => {
                   </div>
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("phone", { required: true })}
-                      placeholder="Enter your phone"
+                      placeholder="Enter your phone dark:bg-black dark:text-white"
                     ></input>
                     {errors.phone && (
                       <span className="text-red-500">Phone is required</span>
@@ -130,7 +132,7 @@ const SignUp = () => {
                   </div>
                   <div className="flex flex-col md:my-4 mb-2">
                     <input
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("address", { required: true })}
                       placeholder="Enter your address"
                     ></input>

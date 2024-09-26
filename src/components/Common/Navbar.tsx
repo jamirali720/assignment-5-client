@@ -1,30 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
 import image from "../../assets/logo.png";
-
-import { FaShoppingCart } from "react-icons/fa";
+import Switch from "react-switch";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { logout, userToken } from "../../redux/features/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
+import { toggleDarkMode } from "../../redux/features/themeSlice";
 
 const Navbar = () => {
   const token = useAppSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = token && verifyToken(token!);
-
+  const theme = useAppSelector((state) => state.theme.isDarkMode);
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
   };
+
+  const onChange = () => {  
+   dispatch(toggleDarkMode());
+  };
   return (
-    <header className="fixed top-0 left-0 bg-gradient-to-r from-sky-600 to-sky-400  w-screen md:w-full h-auto md:h-[80px] flex justify-center  justify-items-center px-5 z-50">
-      <div className="flex w-full h-full justify-between items-center">
+    <header
+      className={`fixed top-0 left-0 border-b  w-screen md:w-full h-auto md:h-[80px] flex justify-center  justify-items-center px-5 z-50 ${
+        theme && "dark" 
+      }`}
+    >
+      <div className="flex w-full h-full justify-between items-center dark:bg-black dark:text-white ">
         <div className="hidden md:block ">
           <Link to="/" className="cursor-pointer">
             <img
               src={image}
               alt="sports"
-              className="bg-white w-20 h-12 rounded-full p-2"
+              className=" w-20 h-12 rounded-full p-2"
             />
           </Link>
         </div>
@@ -35,7 +43,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/"
-                  className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                  className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                 >
                   Home
                 </Link>
@@ -44,7 +52,7 @@ const Navbar = () => {
                 {user && (
                   <Link
                     to={`/${user["role"]}/dashboard`}
-                    className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                    className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                   >
                     Dashboard
                   </Link>
@@ -52,8 +60,16 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
+                  to="/lists"
+                  className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                >
+                  Bike Lists
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/about"
-                  className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                  className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                 >
                   About Us
                 </Link>
@@ -63,7 +79,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/signup"
-                      className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                      className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                     >
                       Sign Up
                     </Link>
@@ -71,7 +87,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/login"
-                      className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                      className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                     >
                       Login
                     </Link>
@@ -81,24 +97,14 @@ const Navbar = () => {
                 <li onClick={handleLogout}>
                   <Link
                     to=""
-                    className="font-semibold text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
+                    className="font-semibold  dark:text-white text-lg hover:text-[#F45634]  duration-300 ease-in-out"
                   >
                     Logout
                   </Link>
                 </li>
               )}
               <li>
-                <Link
-                  to="/cart"
-                  className="font-semibold text-white text-lg flex justify-center justify-items-center hover:text-[#F45634] duration-300 ease-in-out"
-                >
-                  <span className="text-white">
-                    <FaShoppingCart />
-                  </span>
-                  <span className="w-6 h-6 relative -top-4 bg-white rounded-full text-center text-sm text-[#F45634] pt-1">
-                    0
-                  </span>
-                </Link>
+                <Switch onChange={onChange} checked={theme} />
               </li>
             </ul>
           </nav>

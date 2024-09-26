@@ -58,7 +58,7 @@ const ReviewModal = ({ id }: { id: string }) => {
 
   return (
     <>
-      <Button type="default" onClick={showModal} className="p-5">
+      <Button type="primary" onClick={showModal} className="p-5">
         Submit Review
       </Button>
       <Modal

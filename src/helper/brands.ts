@@ -1,0 +1,16 @@
+export const brands = [
+   {label:"Yamaha", value: "Yamaha"},
+   {label:"Kawasaki", value: "Kawasaki"},
+   {label:"Honda", value: "Honda"},
+   {label:"Royal Enfield", value: "Royal Enfield"},
+   {label:"Suzuki", value: "Suzuki"},
+   {label:"BMW", value: "BMW"},
+   {label:"Hero MotoCorp", value: "Hero MotoCorp"},
+   {label:"Harley-Davidson", value: "Harley-Davidson"},
+   {label:"Ducati", value: "Ducati"},
+   {label:"Triumph", value: "Triumph"},
+   {label:"Bajaj", value: "Bajaj"},
+   {label:"Aprilia", value: "Aprilia"},
+   {label:"TVS", value: "TVS"},
+   {label:"Indian Motorcycle", value: "Indian Motorcycle"},
+]

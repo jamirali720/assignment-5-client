@@ -1,0 +1,16 @@
+export const roles = [
+  "CEO",
+ "CEO & Founder",
+  "COO",
+  "CFO",
+  "CMP",
+  "CTO",
+  "CIO",
+  "CHRO",
+  "CPO",
+  "Marketing Manager",
+  "Sales Director",
+  "Brand Manager",
+  "Operations Manager",
+  "Controller",
+];

@@ -7,14 +7,21 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useAppSelector } from "../../hooks/hooks";
+
+
+//bg-gradient-to-tr from-sky-600 to-sky-300
 
 const Footer = () => {
+const theme = useAppSelector(state => state.theme.isDarkMode)
   return (
-    <div className="w-screen md:w-full md:h-[320px] p-5 mt-2 bg-gradient-to-r from-sky-400 to-sky-600">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:grid-cols-2">
-        <div className="m-auto">
+    <div
+      className={`w-screen md:w-full md:h-[320px] p-5 mt-1 ${theme && "dark"}`}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:grid-cols-2 text-slate-900 dark:bg-black dark:text-white">
+        <div className="m-auto ">
           <h1 className="text-bold text-2xl mb-5">Navigation Links </h1>
-          <ul className="space-y-2">
+          <ul className="space-y-2 ">
             <li>
               <Link to="/">Home</Link>
             </li>

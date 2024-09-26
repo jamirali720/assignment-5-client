@@ -5,11 +5,17 @@ import { TBikeResponse } from "types/types";
 
 
 const Featured = () => {
-    const searchQuery = useAppSelector(state=> state.filter.searchTerm)
-    const { data } = useGetAllBikesQuery(searchQuery) 
-    console.log(data)
+    const { searchTerm, brand, year, cc, model } = useAppSelector((state) => state.filter);
+    const filterOptions = {searchTerm, brand, year, cc, model}
+    const { data } = useGetAllBikesQuery(filterOptions, {
+        pollingInterval:50000, 
+        skip: false,
+        refetchOnMountOrArgChange: true,        
+    }); 
+     const theme = useAppSelector((state) => state.theme.isDarkMode);
+   
     return (
-        <div  className="grid grid-cols-1 md:grid-cols-4 gap-4 z-0">
+        <div  className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 z-0 my-1 ${theme && "dark"}`}>
              {
                 data?.data.map((bike: TBikeResponse, index:number) => <FeaturedCard key={index} bike={bike}></FeaturedCard>)
              }

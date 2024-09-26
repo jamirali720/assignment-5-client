@@ -11,20 +11,40 @@ export type TLoginUser = {
   password: string;     
 };
 
-export type TUserResponse = {  
-  _id?: string;
-  name: string;
-  email: string;
-  password: string;  
-  phone: string;
-  address: string; 
-  role: string;
-  image: {
-    url: string;
-    public_id: string;
-  };  
-  createdAt: string;
-  updatedAt: string;
+export type TUserResponse = {
+  data:  {
+    _id?: string;
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    address: string;
+    role: string;
+    image: {
+      url: string;
+      public_id: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+  } 
+  statusCode: number;
+  message: string | null;
+  success: boolean;
+};
+export type TRenderUser = {  
+    _id?: string;
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    address: string;
+    role: string;
+    image: {
+      url: string;
+      public_id: string;
+    };
+    createdAt: string;
+    updatedAt: string;  
 };
 
 
@@ -82,10 +102,14 @@ export type TSingleResponse = {
 
 
 
-export interface IBikeState {
-  cartItems: TBikeResponse[];
-  totalAmount: number;
-  subtotal: number;   
+export interface IBookingState {
+  remainingCost: number;
+  bookingId:string;
+  bookingInfo: {
+    bikeId: string;
+    startTime: string;
+    advanced: number;
+  };
 }
 
 export interface IErrorResponse {
@@ -112,6 +136,16 @@ export type TReview = {
   email: string;
   message: string;
   rating: number;
+  userId: {
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+    image: {
+      url: string;
+      public_id: string;
+    }
+  }
 };
 
 export interface ITheme {
@@ -165,10 +199,34 @@ export interface ITeamMember {
   };
 }
 
+export interface TBookingResponse {
+  _id: string;
+  userId: string;
+  bikeId: {
+    name: string;
+  };
+  advanced: number;
+  startTime: string;
+  returnTime: string | null;
+  isReturned: boolean;
+  totalCost: number;
+  remainingCost: number;
+  paymentId: string;
+  isReturnedMoney:boolean;
+}
+
 
 export type TAuthState ={
   user: null | object;
   token: null | string
+}
+
+export type TDecodedResult ={
+ email: string;
+ exp:string;
+ iat: string;
+ userId: string;
+  role: string;
 }
 
 export type TImageUpload ={
@@ -194,3 +252,40 @@ export type RefreshResult = {
   };
   meta?: { request: Request; response: Response };
 };
+
+export interface ITeam {
+  _id?: string;
+  name: string;
+  role: string;
+  image: string;
+  facebookLink: string;
+  twitterLink: string;
+  linkedinLink: string;
+  githubLink: string;
+  youtubeLink: string;
+  instagramLink: string;
+}
+
+export interface ITeamResponse {
+  _id: string;
+  name: string;
+  role: string;
+  facebookLink: string;
+  twitterLink: string;
+  linkedinLink: string;
+  githubLink: string;
+  instagramLink: string;
+  image: {
+    url: string;
+    public_id: string;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+
+
+export interface IChangePassword {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

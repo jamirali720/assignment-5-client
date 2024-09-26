@@ -16,8 +16,10 @@ import { TContact } from "types/types";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { Button } from "antd";
+import { useAppSelector } from "../../hooks/hooks";
 
 const ContactUs = () => {
+     const theme = useAppSelector((state) => state.theme.isDarkMode);
   const {
     register,
     reset,
@@ -50,20 +52,20 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="border-t md:my-5 md:py-5 bg-gradient-to-tr from-sky-500 to-sky-300">
+    <div className={`md:my-1 md:py-5 ${theme && "dark"} `}>
       <section className="w-screen md:w-full h-full shadow-sm rounded-md">
         <div className="pt-3">
-          <h1 className="text-center text-3xl font-medium text-white">
+          <h1 className="text-center text-3xl font-medium text-slate-700 dark:text-white">
             Contact Us
           </h1>
 
-          <div className="grid md:grid-cols-2 px-10">
+          <div className="grid md:grid-cols-2 px-10 dark:bg-slate-900 text-white">
             <div className="my-5 grid md:grid-cols-1 md:p-3">
               <div className="">
-                <h1 className="text-start text-white text-1xl  font-semibold">
+                <h1 className="text-start text-slate-900 dark:text-white text-1xl  font-semibold">
                   Get In Touch
                 </h1>
-                <p className="text-justify">
+                <p className="text-justify text-slate-900 dark:text-white">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Assumenda libero eos eveniet asperiores ad? Fugiat hic dicta
                   voluptas ipsum quos, quae quasi ducimus dolor vero consequatur
@@ -71,35 +73,41 @@ const ContactUs = () => {
                 </p>
               </div>
 
-              <div className="flex justify-start justify-items-center space-x-3">
+              <div className="flex justify-start justify-items-center space-x-3 dark:text-white">
                 <span className="w-8 h-8 p-2  rounded-full bg-red-400 text-white">
                   <FaLocationDot size={15} />
                 </span>
-                <div className="flex-col space-y-1">
-                  <h2 className="text-1xl font-medium text-slate-600">
+                <div className="flex-col space-y-1 ">
+                  <h2 className="text-1xl font-medium dark:text-white text-slate-600">
                     Address
                   </h2>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-slate-600 dark:text-white">
                     Kadamtaly, Titas, Comilla, Bangladesh
                   </p>
                 </div>
               </div>
               <div className="flex justify-start justify-items-center space-x-3">
-                <span className="w-8 h-8 p-2  rounded-full bg-red-400 text-white">
+                <span className="w-8 h-8 p-2  rounded-full bg-red-400 dark:text-white  text-white">
                   <FaPhone size={15} />
                 </span>
                 <div className="flex-col space-y-1">
-                  <h2 className="text-1xl font-medium text-slate-600">Phone</h2>
-                  <p className="text-sm text-slate-600">+8801814245427</p>
+                  <h2 className="text-1xl font-medium dark:text-white text-slate-600">
+                    Phone
+                  </h2>
+                  <p className="text-sm dark:text-white text-slate-600">
+                    +8801814245427
+                  </p>
                 </div>
               </div>
               <div className="flex justify-start justify-items-center space-x-3">
-                <span className="w-8 h-8 p-2  rounded-full bg-red-400 text-white">
+                <span className="w-8 h-8 p-2  rounded-full dark:text-white bg-red-400 text-white">
                   <MdMarkEmailRead size={15} />
                 </span>
                 <div className="flex-col space-y-1">
-                  <h2 className="text-1xl font-medium text-slate-600">Email</h2>
-                  <p className="text-sm text-slate-600">
+                  <h2 className="text-1xl font-medium dark:text-white text-slate-600">
+                    Email
+                  </h2>
+                  <p className="text-sm dark:text-white text-slate-600">
                     jamirali720@gmail.com
                   </p>
                 </div>
@@ -163,7 +171,10 @@ const ContactUs = () => {
             <div className="my-5 md:border-l">
               <form className="md:px-10" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-col space-y-2 my-4">
-                  <label className="text-slate-500" htmlFor="name">
+                  <label
+                    className=" dark:text-white text-slate-500"
+                    htmlFor="name"
+                  >
                     Name:
                   </label>
                   <input
@@ -177,7 +188,10 @@ const ContactUs = () => {
                   )}
                 </div>
                 <div className="flex-col space-y-2 my-4">
-                  <label className="text-slate-500" htmlFor="email">
+                  <label
+                    className="dark:text-white  text-slate-500"
+                    htmlFor="email"
+                  >
                     Email:
                   </label>
                   <input
@@ -187,12 +201,17 @@ const ContactUs = () => {
                     placeholder="Write your email address"
                   />
                   {errors.email && (
-                    <span className="text-red-500">Email is required</span>
+                    <span className=" dark:text-white text-red-500">
+                      Email is required
+                    </span>
                   )}
                 </div>
 
                 <div className="flex-col space-y-2 my-4">
-                  <label className="text-slate-500" htmlFor="subject">
+                  <label
+                    className=" dark:text-white text-slate-500"
+                    htmlFor="subject"
+                  >
                     Subject:
                   </label>
                   <input
@@ -202,11 +221,16 @@ const ContactUs = () => {
                     placeholder="Write your phone subject"
                   />
                   {errors.subject && (
-                    <span className="text-red-500">Subject is required</span>
+                    <span className="dark:text-white text-red-500">
+                      Subject is required
+                    </span>
                   )}
                 </div>
                 <div className="flex-col space-y-2 my-4">
-                  <label className="text-slate-500" htmlFor="message">
+                  <label
+                    className="dark:text-white text-slate-500"
+                    htmlFor="message"
+                  >
                     Message:
                   </label>
                   <textarea
@@ -219,7 +243,11 @@ const ContactUs = () => {
                   )}
                 </div>
                 <div className=" w-11/12 my-5 text-end">
-                  <Button type="default" htmlType="submit" className="p-5 ">
+                  <Button
+                    type={`${theme ? "default" : "primary"}`}
+                    htmlType="submit"
+                    className="p-5 "
+                  >
                     {isLoading ? "Sending" : "Submit"}
                   </Button>
                 </div>

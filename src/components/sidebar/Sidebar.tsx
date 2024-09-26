@@ -32,7 +32,7 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
     <Sider trigger={null} collapsible collapsed={collapsed}>
       <div className="demo-logo-vertical" />
       <Menu
-        theme="dark"
+        theme="dark" 
         mode="inline"
         defaultSelectedKeys={["1"]}
         items={sidebarItems}

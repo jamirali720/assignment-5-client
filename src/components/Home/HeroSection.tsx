@@ -4,6 +4,7 @@ import Spinner from "../../utils/Spinner";
 
 import { Button } from "antd";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../../hooks/hooks";
 
 const HeroSection = () => {
   const [index, setIndex] = useState<number>(0);
@@ -12,6 +13,7 @@ const HeroSection = () => {
     skip: false,
     refetchOnMountOrArgChange: true,
   });
+    const theme = useAppSelector((state) => state.theme.isDarkMode);
 
   // get images length
   const dataLength = data?.data.length - 1;
@@ -29,12 +31,17 @@ const HeroSection = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="mt-20 md:h-[80vh] grid grid-cols-1 py-20 md:py-0 md:grid-cols-2">
+        <div
+          className={`mt-20 md:h-[80vh] ${
+            theme && "dark"
+          } grid grid-cols-1 py-20 md:py-0 md:grid-cols-2`}
+        >
           <div className="h-full p-5 md:p-18">
             <h1 className="text-5xl font-bold">
-              <span className="text-[#4096FF]">Rental Bike</span> Service
+              <span className="dark:text-white text-blue-600 mx-3">Rental Bike</span>
+              <span className="dark:text-white">Service</span>
             </h1>
-            <p className="my-10 text-justify text-medium">
+            <p className="my-10 text-justify text-medium dark:text-white">
               A bike, or bicycle, is a two-wheeled, pedal-powered vehicle that
               provides an efficient and eco-friendly mode of transportation. It
               consists of a frame, two wheels, handlebars for steering, pedals
