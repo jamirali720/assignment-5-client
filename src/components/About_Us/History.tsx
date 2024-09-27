@@ -75,11 +75,7 @@ const timelineData = [
     description:
       "Opened our first office and launched bike rental services in the city.",
   },
-  {
-    year: "2015",
-    title: "Expansion",
-    description: "Expanded to multiple cities and introduced electric bikes.",
-  }, 
+   
   {
     year: "2024",
     title: "Award for Sustainability",
