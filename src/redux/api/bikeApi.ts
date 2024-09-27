@@ -91,7 +91,7 @@ export const bikeApi = baseApi.injectEndpoints({
     contactEmailSend: builder.mutation({
       query: (data) => {
         return {
-          url: "/contact",
+          url: "/bikes/contact",
           method: "POST",
           body: data,
         };
