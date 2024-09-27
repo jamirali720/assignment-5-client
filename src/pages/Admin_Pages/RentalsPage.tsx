@@ -56,12 +56,12 @@ const RentalsPage: React.FC = () => {
   return (
     <Fragment>
       <MetaData title="Manage-all-Bikes" />
-      <div>
-        {isLoading || loading ? (
-          <div className="w-full h-screen flex justify-center justify-items-center">
-            <Spinner />
-          </div>
-        ) : (
+      {isLoading || loading ? (
+        <div className="w-full h-screen flex justify-center justify-items-center">
+          <Spinner />
+        </div>
+      ) : (
+        <div>
           <Card>
             <div className="w-full h-10 text-center text-2xl font-semibold mb-3">
               {data?.data.length ? (
@@ -187,8 +187,8 @@ const RentalsPage: React.FC = () => {
               </div>
             </div>
           </Card>
-        )}
-      </div>
+        </div>
+      )}
     </Fragment>
   );
 };
