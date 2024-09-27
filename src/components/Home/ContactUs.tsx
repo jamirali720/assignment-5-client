@@ -41,7 +41,7 @@ const ContactUs = () => {
 
   const onSubmit: SubmitHandler<TContact> = async (data) => {
     try {
-      await contactEmailSend(data);
+      await contactEmailSend({...data});
     } catch (error) {
       console.error(error);
       toast.error("Failed to send email. Please try again!", {
@@ -172,7 +172,7 @@ const ContactUs = () => {
               <form className="md:px-10" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-col space-y-2 my-4">
                   <label
-                    className=" dark:text-white text-slate-500"
+                    className=" dark:text-white text-slate-500 "
                     htmlFor="name"
                   >
                     Name:
@@ -180,7 +180,7 @@ const ContactUs = () => {
                   <input
                     type="text"
                     {...register("name", { required: true })}
-                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
+                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 dark:bg-black border-0 p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
                     placeholder="Write your name"
                   />
                   {errors.name && (
@@ -197,7 +197,7 @@ const ContactUs = () => {
                   <input
                     type="email"
                     {...register("email", { required: true })}
-                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
+                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 dark:bg-black p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
                     placeholder="Write your email address"
                   />
                   {errors.email && (
@@ -217,7 +217,7 @@ const ContactUs = () => {
                   <input
                     type="text"
                     {...register("subject", { required: true })}
-                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
+                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 dark:bg-black  p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
                     placeholder="Write your phone subject"
                   />
                   {errors.subject && (
@@ -235,7 +235,7 @@ const ContactUs = () => {
                   </label>
                   <textarea
                     {...register("message", { required: true })}
-                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
+                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 dark:bg-black p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
                     placeholder="Write your message here"
                   />
                   {errors.message && (
