@@ -12,6 +12,7 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
   const user = token && verifyToken(token!);
   const theme = useAppSelector((state) => state.theme.isDarkMode);
+  
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");

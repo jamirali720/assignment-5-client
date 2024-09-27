@@ -10,8 +10,6 @@ import { FcGoogle } from "react-icons/fc";
 import { useAppSelector } from "../../hooks/hooks";
 
 
-//bg-gradient-to-tr from-sky-600 to-sky-300
-
 const Footer = () => {
 const theme = useAppSelector(state => state.theme.isDarkMode)
   return (

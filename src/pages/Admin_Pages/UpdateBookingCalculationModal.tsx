@@ -33,8 +33,7 @@ const UpdateBookingCalculationModal = ({
     useCalculateBookingMutation();
   const onChange: TimePickerProps["onChange"] = (time) => {
     const rTime = time.toISOString();
-    setReturnTime(rTime);
-    console.log("is empty", rTime);
+    setReturnTime(rTime);  
     setIsEmpty(false);
   };
 

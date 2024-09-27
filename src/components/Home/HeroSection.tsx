@@ -9,7 +9,7 @@ import { useAppSelector } from "../../hooks/hooks";
 const HeroSection = () => {
   const [index, setIndex] = useState<number>(0);
   const { data, isLoading } = useGetAllHeroImagesQuery(undefined, {
-    pollingInterval: 30000,
+    pollingInterval: 3000,
     skip: false,
     refetchOnMountOrArgChange: true,
   });
@@ -21,7 +21,7 @@ const HeroSection = () => {
   useEffect(() => {
     setInterval(() => {
       setIndex(dataLength === index ? 0 : index + 1);
-    }, 60000);
+    }, 6000);
   }, [index, dataLength]);
 
   return (

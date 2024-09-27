@@ -39,8 +39,7 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
       useUpdatedSingleBikesMutation();
     const { data, isLoading: loading } = useGetSingleBikesQuery(bikeId);
 
-    console.log(data);
-    console.log("fetching error", error);
+   
     // show error message
     let message: string = "";
     if (error) {
@@ -66,7 +65,7 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
       formData.append("model", data.model);
       formData.append("year", data.year);
       formData.append("image", data.image[0]);
-      console.log(data);
+      
 
       try {
         await updatedSingleBikes({

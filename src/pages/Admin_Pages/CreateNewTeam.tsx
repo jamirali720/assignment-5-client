@@ -21,7 +21,7 @@ const CreateNewTeam = () => {
   const [createNewBike, { isLoading, isError, error, isSuccess }] =
     useAddTeamMemberMutation();
 
-  console.log("fetching error", error);
+
   // show error message
   let message: string = "";
   if (error) {
@@ -48,7 +48,7 @@ const CreateNewTeam = () => {
     formData.append("twitterLink", data.twitterLink!);   
     formData.append("youtubeLink", data.youtubeLink!);   
     formData.append("image", data.image[0]);
-    console.log(data)
+
 
     try {
       await createNewBike(formData as Partial<ITeam>);

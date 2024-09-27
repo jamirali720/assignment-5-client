@@ -19,7 +19,6 @@ const CreateBike = () => {
   const [createNewBike, { isLoading, isError, error, isSuccess }] =
     useCreateNewBikeMutation();
 
-  console.log("fetching error", error);
   // show error message
   let message: string = "";
   if (error) {
@@ -45,7 +44,7 @@ const CreateBike = () => {
     formData.append("model", data.model);
     formData.append("year", data.year);
     formData.append("image", data.image[0]);
-    console.log(data)
+    
 
     try {
       await createNewBike(formData as Partial<TBikeRequest>);

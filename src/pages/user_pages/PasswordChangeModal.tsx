@@ -89,6 +89,7 @@ const PasswordChangeModal = ({ isModalOpen, setIsModalOpen }: TModalProps) => {
               <input
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("currentPassword", { required: true })}
+                placeholder="Enter Current Password"
               ></input>
               {errors.currentPassword && (
                 <span className="text-red-500">
@@ -101,6 +102,7 @@ const PasswordChangeModal = ({ isModalOpen, setIsModalOpen }: TModalProps) => {
               <input
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("newPassword", { required: true })}
+                placeholder="Enter New Password"
               ></input>
               {errors.newPassword && (
                 <span className="text-red-500">New Password is required</span>
@@ -111,6 +113,7 @@ const PasswordChangeModal = ({ isModalOpen, setIsModalOpen }: TModalProps) => {
               <input
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 {...register("confirmPassword", { required: true })}
+                placeholder="Enter Confirm Password"
               ></input>
               {errors.confirmPassword && (
                 <span className="text-red-500">

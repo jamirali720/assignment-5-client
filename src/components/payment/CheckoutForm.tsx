@@ -49,7 +49,7 @@ const CheckoutForm = ({amount}: {amount:number}) => {
             break;
         }
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [stripe]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -69,7 +69,7 @@ const CheckoutForm = ({amount}: {amount:number}) => {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url:
-          "https://assignment-5-client-deploy.vercel.app/user/payment/success",
+          "https://assignment-5-xi-six.vercel.app/user/payment/success",
       },
     });
    

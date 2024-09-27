@@ -32,7 +32,7 @@ const Payment = () => {
   useEffect(() => {
     const getClientSecret = async () => {
       const clientSecret = await fetch(
-        "http://localhost:5000/api/payment/create-payment-intent",
+        "https://assignment-5-server-two.vercel.app/api/payment/create-payment-intent",
         {
           method: "POST",
           headers: {

@@ -45,7 +45,7 @@ const UserProfilePage = () => {
     isError,
     error,
   } = useGetProfileQuery(undefined, {
-    pollingInterval: 50000,
+    pollingInterval: 5000,
   });
 
   console.log(userData?.data)

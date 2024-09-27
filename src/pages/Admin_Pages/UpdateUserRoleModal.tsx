@@ -32,7 +32,6 @@ const UpdateUserRoleModal = ({ userId }: { userId: string | undefined }) => {
   const [updateUserRole, { isLoading, isError, error }] =
     useUpdateUserRoleMutation();
 
-  console.log("fetching error", error);
   // show error message
   let message: string = "";
   if (error) {

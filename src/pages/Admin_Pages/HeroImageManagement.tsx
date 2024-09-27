@@ -19,7 +19,7 @@ const HeroImageManagement = () => {
   const handleDeleteImage = async (id: string) => {
     try {
       const result = await deletedSingleHeroImage(id);
-      console.log(result);
+
       if (result.data.success) {
         toast.success(result.data.message, {
           position: "top-center",
@@ -45,7 +45,7 @@ const HeroImageManagement = () => {
                   src={heroImage.image.url}
                   alt={heroImage.image.public_id}
                   className="w-56 h-48"
-                />               
+                />
                 <Button
                   onClick={() => handleDeleteImage(heroImage._id)}
                   className="text-red-600 my-2 p-4"

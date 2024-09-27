@@ -19,7 +19,7 @@ const MainLayout: React.FC = () => {
   } = theme.useToken();
 
   return (
-    <Layout className="md:h-[100vh">
+    <Layout className="md:h-[100vh]">
       <Sidebar collapsed={collapsed} />
       <Layout>
         <Header

@@ -32,7 +32,7 @@ const FeaturedCard = ({ bike }: TBike) => {
               {bike.cc}
             </h1>
             <h3 className="text-start font-bold  text-[#0789CB]">
-             Price Per Hour $ {bike.pricePerHour}
+              Price Per Hour $ {bike.pricePerHour}
             </h3>
             <div className="md:flex justify-between justify-items-center gap-1 my-2">
               <Rate

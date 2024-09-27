@@ -19,7 +19,7 @@ import { Button } from "antd";
 import { useAppSelector } from "../../hooks/hooks";
 
 const ContactUs = () => {
-     const theme = useAppSelector((state) => state.theme.isDarkMode);
+  const theme = useAppSelector((state) => state.theme.isDarkMode);
   const {
     register,
     reset,
@@ -259,7 +259,5 @@ const ContactUs = () => {
     </div>
   );
 };
-
-
 
 export default ContactUs;

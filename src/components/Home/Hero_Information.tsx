@@ -4,17 +4,13 @@ import { ChangeEvent } from "react";
 
 const Hero_Information = () => {
   const dispatch = useAppDispatch();
-   const theme = useAppSelector((state) => state.theme.isDarkMode);
+  const theme = useAppSelector((state) => state.theme.isDarkMode);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchTerm(event.target.value));
   };
   return (
-    <div
-      className={`border my-10 ${
-        theme && "dark" 
-      } `}
-    >
+    <div className={`border my-10 ${theme && "dark"} `}>
       <div className="text-slate-900 text-center py-16 dark:bg-slate-900 dark:text-white">
         <h1 className="text-4xl font-bold">Find a Bike Near You!</h1>
         <p className="mt-4 text-lg">

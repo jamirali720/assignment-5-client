@@ -19,12 +19,12 @@ const SignUp = () => {
   const [signUpUser, { isLoading, isError, error }] = useSignUpUserMutation();
   const theme = useAppSelector(state => state.theme.isDarkMode);
 
-  console.log("fetching error", error);
+
   // capture error message
   let message = "";
   if (error) {
     message =
-      (error as IErrorResponse).data.message ||
+      (error as IErrorResponse).data?.message ||
       (error as IErrorResponseStatus).error;
   }
 
@@ -49,7 +49,7 @@ const SignUp = () => {
         formData as Partial<TSignUpUser>
       ).unwrap();
       if (result.success) {
-        toast.success(result.message, {
+        toast.success(result?.message, {
           position: "top-center",
         });
         navigate("/login");
@@ -124,7 +124,7 @@ const SignUp = () => {
                     <input
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
                       {...register("phone", { required: true })}
-                      placeholder="Enter your phone dark:bg-black dark:text-white"
+                      placeholder="Enter your phone "
                     ></input>
                     {errors.phone && (
                       <span className="text-red-500">Phone is required</span>

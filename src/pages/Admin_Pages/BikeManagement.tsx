@@ -27,7 +27,7 @@ const BikeManagement: React.FC = () => {
     }
   );
 
-  console.log(data?.data);
+ 
  
   const [itemPerPage, setItemPerPage] = useState<number>(5);
   const [currentPage, setCurrentPage] = useState(1);

@@ -16,6 +16,7 @@ import Spinner from "../../utils/Spinner";
 const UploadImageToCloudinary = () => {
   const [uploadHeroImage, { isSuccess, isLoading, isError, error }] =
     useUploadHeroImageMutation();
+    
   const {
     register,
     reset,

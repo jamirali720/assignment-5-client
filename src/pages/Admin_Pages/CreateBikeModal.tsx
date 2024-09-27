@@ -33,7 +33,6 @@ const CreateBikeModal: React.FC = () => {
   const [createNewBike, { isLoading, isError, error, isSuccess }] =
     useCreateNewBikeMutation();
 
-  console.log("fetching error", error);
   // show error message
   let message: string = "";
   if (error) {
@@ -231,6 +230,5 @@ const CreateBikeModal: React.FC = () => {
     </>
   );
 };
-
 
 export default CreateBikeModal;
