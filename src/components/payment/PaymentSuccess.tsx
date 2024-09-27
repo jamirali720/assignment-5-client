@@ -69,7 +69,7 @@ const PaymentSuccess: React.FC = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="w-full max-w-full">
+        <div className="w-full max-w-full h-screen">
           <div className="w-full h-full flex justify-center justify-items-center md:mt-20">
             <div className="border p-6 shadow-lg ">
               <AiFillCheckCircle

@@ -1,3 +1,4 @@
+import PaymentSuccess from "../components/payment/PaymentSuccess";
 import Payment from "../components/payment/Payment";
 import BookingProcess from "../pages/user_pages/BookingProcess";
 import MyRentalsPage from "../pages/user_pages/MyRentalsPage";
@@ -37,7 +38,11 @@ export const userPaths = [
         path: "payment",
         element: <Payment />,
       },
-      
+      {
+        name: "Payment Success",
+        path: "payment/success",
+        element: <PaymentSuccess />,
+      },
     ],
   },
 ];

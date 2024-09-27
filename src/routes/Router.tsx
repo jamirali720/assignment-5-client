@@ -10,7 +10,7 @@ import AboutUs from "../components/About_Us/AboutUs";
 import BikeListingPage from "../components/Bike_Management/BikeListingPage";
 import BikeDetailPage from "../components/Bike_Management/BikeDetailPage";
 import NotFound from "../components/notFound/NotFound";
-import PaymentSuccess from "../components/payment/PaymentSuccess";
+
 
 
 
@@ -40,10 +40,7 @@ const router = createBrowserRouter([
         path: "lists",
         element: <BikeListingPage />,
       },
-      {        
-        path: "payment/success",
-        element: <PaymentSuccess />,
-      },
+      
     ],
   },
 
