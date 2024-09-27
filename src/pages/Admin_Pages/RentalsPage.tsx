@@ -56,7 +56,7 @@ const RentalsPage: React.FC = () => {
   return (
     <Fragment>
       <MetaData title="Manage-all-Bikes" />
-      {isLoading || loading ? (
+      {(isLoading || loading) ? (
         <div className="w-full h-screen flex justify-center justify-items-center">
           <Spinner />
         </div>
