@@ -235,7 +235,7 @@ const ContactUs = () => {
                   </label>
                   <textarea
                     {...register("message", { required: true })}
-                    className="placeholder:text-slate-500 block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 dark:bg-black p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
+                    className="placeholder:text-slate-500 text-slate-900 dark:text-white block w-full indent-2 rounded-sm font-light ring-1 ring-gray-300 border-0 dark:bg-black p-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-300"
                     placeholder="Write your message here"
                   />
                   {errors.message && (
