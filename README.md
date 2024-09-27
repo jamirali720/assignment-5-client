@@ -28,7 +28,7 @@ If you are developing a production application, we recommend updating the config
 - User Registration:  You have to create accounts to manage bookings and payment.
 - Pricing Models: Rent bikes by the hour, day, or week with various pricing options.
 - Payment Gateway: Secure online payments via credit cards, digital wallets, etc.
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+
 
 # API Endpoints:
 - GET /bikes/all-bikes: Retrieve a list of available bikes.
