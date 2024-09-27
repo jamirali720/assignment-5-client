@@ -39,7 +39,7 @@ export const userPaths = [
       },
       {
         name: "Success",
-        path: "/payment/success",
+        path: "payment/success",
         element: <PaymentSuccess/>,
       },
     ],
