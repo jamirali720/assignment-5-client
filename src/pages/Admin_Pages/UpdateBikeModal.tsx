@@ -84,10 +84,11 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
         });
       }
       if (isSuccess) {
+        reset();
+        setIsModalOpen(false);
         toast.success("You have successfully updated Bike", {
           position: "top-center",
         });
-        reset();
       }
     }, [isSuccess, isError, message, reset]);
 
