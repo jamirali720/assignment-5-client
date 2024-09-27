@@ -10,7 +10,7 @@ import PaymentSuccess from "../components/payment/PaymentSuccess";
 
 export const userPaths = [
   {
-    name: "Dashboard",
+    name: "User Dashboard",
     path: "dashboard",
     element: <UserDashboard />,
   },
@@ -39,7 +39,7 @@ export const userPaths = [
       },
       {
         name: "Success",
-        path: "payment/success",
+        path: "/payment/success",
         element: <PaymentSuccess/>,
       },
     ],

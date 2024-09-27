@@ -11,7 +11,7 @@ import RentalsPage from "../pages/Admin_Pages/RentalsPage";
 
 export const adminPaths = [
   {
-    name: "Dashboard",
+    name: "Admin Dashboard",
     path: "dashboard",
     element: <AdminDashboard />,
   },
