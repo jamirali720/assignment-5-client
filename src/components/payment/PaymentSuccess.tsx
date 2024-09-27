@@ -94,7 +94,7 @@ const PaymentSuccess: React.FC = () => {
                 )}
               </p>
               <div className="text-center md:my-5">
-                {bookingInfo.advanced ? (
+                {bookingInfo.advanced > 0 ? (
                   <Button
                     type="primary"
                     className="p-5 font-bold text-lg "
