@@ -46,7 +46,9 @@ const ContactUs = () => {
     fd.append("subject", data.subject);
     fd.append("message", data.message);
     try {
-      await contactEmailSend(fd);
+     const result =   await contactEmailSend(fd);
+     console.log(result)
+     
     } catch (error) {
       console.error(error);
       toast.error("Failed to send email. Please try again!", {
