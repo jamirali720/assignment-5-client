@@ -40,15 +40,11 @@ const ContactUs = () => {
   }, [isSuccess, reset]);
 
   const onSubmit: SubmitHandler<TContact> = async (data) => {
-    const fd = new FormData();
-    fd.append("name", data.name);
-    fd.append("email", data.email);
-    fd.append("subject", data.subject);
-    fd.append("message", data.message);
+    
     try {
-     const result =   await contactEmailSend(fd);
+     const result = await contactEmailSend(data);
      console.log(result)
-     
+
     } catch (error) {
       console.error(error);
       toast.error("Failed to send email. Please try again!", {
