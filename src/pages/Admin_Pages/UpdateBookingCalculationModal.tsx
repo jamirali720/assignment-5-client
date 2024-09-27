@@ -78,7 +78,7 @@ const UpdateBookingCalculationModal = ({
   return (
     <Fragment>
       {isLoading ? (
-        <div>
+        <div className="w-full h-screen flex justify-center justify-items-center">
           <Spinner />
         </div>
       ) : (
@@ -88,7 +88,7 @@ const UpdateBookingCalculationModal = ({
             type="primary"
             onClick={showModal}
             className="p-5 mx-2"
-          >           
+          >
             Calculate Fair
           </Button>
           <Modal
