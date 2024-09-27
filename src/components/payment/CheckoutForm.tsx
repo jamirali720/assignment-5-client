@@ -69,7 +69,7 @@ const CheckoutForm = ({amount}: {amount:number}) => {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url:
-          "https://assignment-5-xi-six.vercel.app/user/payment/success",
+          "https://assignment-5-client-brown.vercel.app/user/payment/success",
       },
     });
    

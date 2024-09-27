@@ -11,6 +11,7 @@ import { RefreshResult } from "types/types";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://assignment-5-server-two.vercel.app/api",
+  // baseUrl: "http://localhost:5000/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

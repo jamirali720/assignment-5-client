@@ -11,7 +11,7 @@ import { useAppSelector } from "../../hooks/hooks";
 const initStripe = async () => {
   // Retrieve the publishable key from backend
   const publishableKey = await fetch(
-    "http://localhost:5000/api/payment/publishable-key"
+    "https://assignment-5-server-two.vercel.app/api/payment/publishable-key"
   );
   const response = await publishableKey.json();
   return loadStripe(response.publishableKey);
@@ -33,6 +33,7 @@ const Payment = () => {
     const getClientSecret = async () => {
       const clientSecret = await fetch(
         "https://assignment-5-server-two.vercel.app/api/payment/create-payment-intent",
+        // "http://localhost:5000/api/payment/create-payment-intent",
         {
           method: "POST",
           headers: {
