@@ -3,7 +3,7 @@ import BookingProcess from "../pages/user_pages/BookingProcess";
 import MyRentalsPage from "../pages/user_pages/MyRentalsPage";
 import UserDashboard from "../pages/user_pages/UserDashboard";
 import UserProfilePage from "../pages/user_pages/UserProfilePage";
-
+import PaymentSuccess from "../components/payment/PaymentSuccess";
 
 
 
@@ -37,7 +37,11 @@ export const userPaths = [
         path: "payment",
         element: <Payment />,
       },
-      
+      {
+        name: "Success",
+        path: "payment/success",
+        element: <PaymentSuccess/>,
+      },
     ],
   },
 ];
