@@ -39,6 +39,7 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
       useUpdatedSingleBikesMutation();
     const { data, isLoading: loading } = useGetSingleBikesQuery(bikeId);
 
+    console.log("checking error: " + error)
    
     // show error message
     let message: string = "";
@@ -64,7 +65,7 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
       formData.append("brand", data.brand);
       formData.append("model", data.model);
       formData.append("year", data.year);
-      formData.append("image", data.image[0]);
+      formData.append("image", data.file[0]);
       
 
       try {
@@ -215,10 +216,10 @@ const UpdateBikeModal  = ({bikeId}:{bikeId:string | undefined}) => {
                       <input
                         type="file"
                         id="file"
-                        {...register("image", { required: true })}
+                        {...register("file", { required: true })}
                         hidden
                       ></input>
-                      {errors.image && (
+                      {errors.file && (
                         <span className="text-red-500">File is required</span>
                       )}
                     </div>

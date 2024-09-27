@@ -43,7 +43,7 @@ const CreateBike = () => {
     formData.append("brand", data.brand);
     formData.append("model", data.model);
     formData.append("year", data.year);
-    formData.append("image", data.image[0]);
+    formData.append("image", data.file[0]);
     
 
     try {
@@ -173,10 +173,10 @@ const CreateBike = () => {
                   <input
                     type="file"
                     id="file"
-                    {...register("image", { required: true })}
+                    {...register("file", { required: true })}
                     hidden
                   ></input>
-                  {errors.image && (
+                  {errors.file && (
                     <span className="text-red-500">File is required</span>
                   )}
                 </div>

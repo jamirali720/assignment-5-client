@@ -56,7 +56,7 @@ export type TBikeRequest = {
   year: string;
   model: string;
   brand: string;
-  image: string;  
+  file: string;  
 };
 
 
