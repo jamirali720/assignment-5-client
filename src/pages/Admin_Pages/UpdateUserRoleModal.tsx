@@ -52,10 +52,12 @@ const UpdateUserRoleModal = ({ userId }: { userId: string | undefined }) => {
       const result = await updateUserRole({ userId, role: data.role });
       console.log(result);
       if (result.data.success) {
+        reset();
+        setIsModalOpen(false);
         toast.success(result.data.message, {
           position: "top-center",
         });
-        reset();
+        
       }
     } catch (error) {
       console.log(error);

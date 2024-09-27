@@ -74,6 +74,7 @@ const CreateBikeModal: React.FC = () => {
       });
     }
     if (isSuccess) {
+      setIsModalOpen(false); //
       toast.success("You have successfully created Bike", {
         position: "top-center",
       });
