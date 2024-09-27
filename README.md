@@ -1,51 +1,45 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a application of rentals bike service 
 
-Currently, two official plugins are available:
+There are client and server deployment links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Live Deployment Link of vercel (Client)](https://assignment-5-client-brown.vercel.app)
+- [GitHub Repository Links(Client)](https://github.com/jamirali720/assignment-5-client)
+- [Live Deployment Link of vercel (Client)](https://assignment-5-client-brown.vercel.app)
+- [GitHub Repository Links (Server)](https://github.com/jamirali720/assignment-5-server)
 
-## Expanding the ESLint configuration
+
+## Dependencies and configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+- to install all dependencies : run 
 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+   npm install 
+```
+- to Start the server :
+
+```js
+  npm   run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- User Registration:  You have to create accounts to manage bookings and payment.
+- Pricing Models: Rent bikes by the hour, day, or week with various pricing options.
+- Payment Gateway: Secure online payments via credit cards, digital wallets, etc.
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+# API Endpoints:
+- GET /bikes/all-bikes: Retrieve a list of available bikes.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+# Technologies Used:
+- Frontend: React.js
+- Backend: Node.js, Express, Mongoose, 
+- Database: MongoDB
+- Payment Integration: Stripe
+
+# Contributing: 
+ - Feel free to open issues and contribute by submitting pull requests.
+
 # assignment-5-client
